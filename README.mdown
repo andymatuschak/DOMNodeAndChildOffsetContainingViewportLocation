@@ -1,0 +1,30 @@
+# `DOMNodeAndChildOffsetContainingViewportLocation`
+
+Say you're doing something webby. And you have a viewport or screen location. And you want to know what that user's touching. But you don't want to know just what *element* the user's touching: if he's touching a letter, you want to know *which letter*.
+
+`DOMNodeAndChildOffsetContainingViewportLocation`: to the rescue!
+
+## Example
+
+```coffeescript
+# HTML:
+<div id="mydiv">
+  Some <strong>text</strong> and an image: <img src="a.jpg" />
+</div>
+
+# CoffeeScript:
+$("#mydiv").mousemove( (event) ->
+  window.DOMNodeAndChildOffsetContainingViewportLocation this, event.clientX,
+                                                         event.clientY
+  # => [theTextNodeContaining'Some ', 3] (if your cursor is over the 'e')
+  # => [theTextNodeContaining'text', 2] (if your cursor is over the 'x')
+  # => [this, 3] (if your cursor is over the image)
+  # => [null, 0] (if your cursor isn't within #myDiv)
+)
+```
+
+## Details
+
+This should work in any browser which supports `DOMRange.getClientRects`. There are no library dependencies.
+
+This function will perform slowly when asked to search large DOM trees, so you'll want to constrain the input node as much as possible before calling.
