@@ -4,6 +4,8 @@ Say you're doing something webby. And you have a viewport or screen location. An
 
 `DOMNodeAndChildOffsetContainingViewportLocation`: to the rescue!
 
+I wrote this so that I could construct a `DOMRange` from a known location to the content under a user's cursor.
+
 ## Example
 
 ```coffeescript
