@@ -30,8 +30,8 @@ Returns a two-element array. At index 0 will be the deepest node containing
   within that container node of the child element (or, in the case of a text
   node, the character) whose bounding rect contains that location.
 
-Raises if startNode is undefined or null.
-Raises if the browser does not support DOMRange.getClientRects().
+Throws if startNode is undefined or null.
+Throws if the browser does not support DOMRange.getClientRects().
 
 ###
 @DOMNodeAndChildOffsetContainingViewportLocation = (startNode, clientX, clientY) ->
